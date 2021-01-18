@@ -14,9 +14,9 @@ import java.util.stream.Collectors;
 
 public class UserPanelService {
 
-    FlightDao flightDao;
-    UserDao userDao;
-    BookingDao bookingDao;
+    private FlightDao flightDao;
+    private UserDao userDao;
+    private BookingDao bookingDao;
 
     public UserPanelService(FlightDao flightDao, UserDao userDao, BookingDao bookingDao) {
         this.flightDao = flightDao;
