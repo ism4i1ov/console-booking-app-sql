@@ -44,8 +44,7 @@ public class UserPanelController {
 
     public String showMyBookings(String id) {
         List<Booking> bookingsIdByUserId = userPanelService.getBookingsIdByUserId(id);
-        if (bookingsIdByUserId.isEmpty()) return "You don't have flights";
-        return bookingsIdByUserId.stream().map(Booking::toString).collect(Collectors.joining("\n"));
+        return bookingsIdByUserId.isEmpty() ? "You don't have flights" : bookingsIdByUserId.stream().map(Booking::toString).collect(Collectors.joining("\n"));
     }
 
     public String cancelBooking(String id) {
