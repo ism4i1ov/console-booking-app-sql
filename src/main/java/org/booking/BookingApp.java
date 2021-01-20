@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 public class BookingApp {
 
-    private static Console console = new WindowsConsole(new Scanner(System.in));
+    private static final Console console = new WindowsConsole(new Scanner(System.in));
 
     public static void main(String[] args) {
         LoginPanelController loginPanelController = new LoginPanelController(new LoginPanelService(new UserDao()));

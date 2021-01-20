@@ -13,6 +13,8 @@ public class Flight implements Serializable {
     private String flightFrom;
     private String destination;
     private int freePlaces;
+    public static final long serialVersionUID = 1L;
+
 
     public Flight(int id, String airlineName, LocalDateTime departDateTime, LocalDateTime arrivalDateTime, String flightFrom, String destination, int freePlaces) {
         this.id = id;

@@ -11,6 +11,7 @@ public class User implements Serializable {
     private String name;
     private String surname;
     private List<Booking> bookingList;
+    public static final long serialVersionUID = 1L;
 
     public User(int id, String username, String password, String name, String surname) {
         this.id = id;

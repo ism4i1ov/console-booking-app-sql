@@ -9,6 +9,7 @@ public class Booking implements Serializable {
     private final int flightId;
     private int ticketCount;
     private int userId;
+    public static final long serialVersionUID = 1L;
 
     public Booking(int id, int flightId, int ticketCount, int userId) {
         this.id = id;
