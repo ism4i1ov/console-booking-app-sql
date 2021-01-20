@@ -12,7 +12,7 @@ import java.util.Optional;
 public class FlightDao implements DatabaseInter<Flight> {
 
     @Override
-    public int add(Flight flight) {
+    public int create(Flight flight) {
         String sql = "insert into flight values(default, ?, ?, ?, ?, ?, ?) returning id";
         try (PreparedStatement preparedStatement = connection().prepareStatement(sql)) {
             preparedStatement.setString(1, flight.getAirlineName());
@@ -31,7 +31,7 @@ public class FlightDao implements DatabaseInter<Flight> {
     }
 
     @Override
-    public boolean remove(String id) {
+    public boolean delete(String id) {
         String sql = "delete from flight where id = " + id;
         try (Statement statement = connection().createStatement()) {
             return statement.execute(sql);

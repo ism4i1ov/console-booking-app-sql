@@ -14,7 +14,7 @@ import java.util.Optional;
 public class UserDao implements DatabaseInter<User> {
 
     @Override
-    public int add(User user) {
+    public int create(User user) {
         String sql = "insert into " +
                 "\"user\" values(default,?,?,?,?) returning id";
         try (PreparedStatement preparedStatement = connection().prepareStatement(sql)) {
@@ -32,7 +32,7 @@ public class UserDao implements DatabaseInter<User> {
     }
 
     @Override
-    public boolean remove(String id) {
+    public boolean delete(String id) {
         String sql = "delete from \"user\" where id = " + id;
         try (Statement statement = connection().createStatement()) {
             return statement.execute(sql);

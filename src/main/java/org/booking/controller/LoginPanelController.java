@@ -13,7 +13,6 @@ public class LoginPanelController {
         this.loginPanelService = loginPanelService;
     }
 
-
     public String showMenu() {
         return loginPanelService.showLoginMenu();
     }
@@ -24,7 +23,9 @@ public class LoginPanelController {
     }
 
     public String register(String username, String password, String name, String surname) {
-        return loginPanelService.getUserByUsername(username).isPresent() ? "This username exists!" : signUp(username, password, name, surname);
+        return loginPanelService.getUserByUsername(username)
+                .map(user -> "This username exists!")
+                .orElse(signUp(username, password, name, surname));
     }
 
     private String signUp(String username, String password, String name, String surname) {

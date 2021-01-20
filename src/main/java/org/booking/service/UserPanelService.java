@@ -41,7 +41,7 @@ public class UserPanelService {
 
     public Optional<Booking> bookFlight(int userId, int flightId, int ticketCount) {
         Booking booking = new Booking(0, flightId, ticketCount, userId);
-        int addBookingId = bookingDao.add(booking);
+        int addBookingId = bookingDao.create(booking);
 
         Optional<Flight> optionalFlight = flightDao.getById(String.valueOf(flightId));
         optionalFlight.get().setFreePlaces(optionalFlight.get().getFreePlaces() - ticketCount);
@@ -63,7 +63,7 @@ public class UserPanelService {
             Optional<Flight> optionalFlight = flightDao.getById(String.valueOf(booking.getFlightId()));
             optionalFlight.get().setFreePlaces(optionalFlight.get().getFreePlaces() + booking.getTicketCount());
             flightDao.update(optionalFlight.get());
-            return bookingDao.remove(id);
+            return bookingDao.delete(id);
         }).orElse(true);
     }
 }

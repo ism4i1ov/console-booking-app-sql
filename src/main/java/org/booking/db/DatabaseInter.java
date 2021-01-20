@@ -8,15 +8,17 @@ import java.sql.SQLException;
 public interface DatabaseInter<T> {
 
     default Connection connection() throws SQLException {
-        String url = "jdbc:postgresql://localhost:5432/postgres";
-        String username = "postgres";
-        String password = "12345";
+        String url = System.getenv("DB_URL");
+        String username = System.getenv("DB_USERNAME");
+        String password = System.getenv("DB_PASSWORD");
         return DriverManager.getConnection(url, username, password);
     }
 
-    int add(T t);
+    // CRUD -> Create Read(Selected) Update Delete
 
-    boolean remove(String id);
+    int create(T t);
+
+    boolean delete(String id);
 
     List<T> getAll();
 

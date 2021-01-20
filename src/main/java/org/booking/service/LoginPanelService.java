@@ -28,6 +28,6 @@ public class LoginPanelService {
 
     public void signUp(String username, String password, String name, String surname) {
         User user = new User(0, username, password, name, surname);
-        userDao.add(user);
+        userDao.create(user);
     }
 }

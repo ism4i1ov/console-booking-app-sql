@@ -15,7 +15,7 @@ import java.util.Optional;
 public class BookingDao implements DatabaseInter<Booking> {
 
     @Override
-    public int add(Booking booking) {
+    public int create(Booking booking) {
         String sql = "insert into " +
                 "booking values(default,?,?,?) returning id";
         try (PreparedStatement preparedStatement = connection().prepareStatement(sql)) {
@@ -32,7 +32,7 @@ public class BookingDao implements DatabaseInter<Booking> {
     }
 
     @Override
-    public boolean remove(String id) {
+    public boolean delete(String id) {
         String sql = "delete from booking where id = " + id;
         try (Statement statement = connection().createStatement()) {
             return statement.execute(sql);
